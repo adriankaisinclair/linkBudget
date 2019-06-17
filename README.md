@@ -2,4 +2,7 @@ Link budget calcuator for cascaded microwave systems, linkBudgetCalc.py, which i
 
 Written by Adrian Sinclair
 
+May need to install SchemDraw python library
+pip install SchemDraw
+
 Template file for using the linkBudgetCalc.py is blast500um.py
