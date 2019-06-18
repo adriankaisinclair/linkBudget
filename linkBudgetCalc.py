@@ -47,7 +47,7 @@ def addAmp(T,G,S=0.,p=0):
       p[-1][3] = P  # assign output power to new array      
       Gc = 10.0**(p[:,2]/10.0) # component gain array and convert to linear
       p_flat = p.flatten()
-      for i in range(len(p_flat)/nParams): # Friis cascade noise loop
+      for i in range(int(len(p_flat)/nParams)): # Friis cascade noise loop
           Ti = p[i][1] # grab specific components noise, or thermal temp
           if i == 0:
             Tf += Ti
@@ -91,7 +91,7 @@ def addAtten(T,A,S=0.,p=0):
       # output signal power
       P = S-abs(A) # [dBm]
       NSD =10.0*np.log10( 1.38e-23*Tf*1000.0) # noise spectral density [dBm/Hz]
-      p = np.array([S, T, -abs(A), P, NSD])
+      p = np.array([S, T*(10.**(abs(A)/10.0)-1.), -abs(A), P, NSD])
     
     else:
       #Noise calculation with temperature modified for attenuator T_equiv = T_phys*(Atten-1)
@@ -103,13 +103,16 @@ def addAtten(T,A,S=0.,p=0):
       Gc = 10.0**(p[:,2]/10.0) # component gain array and convert to linear
       #print(Gc)
       p_flat = p.flatten()
-      for i in range(len(p_flat)/nParams): # Friis cascade noise loop
+      for i in range(int(len(p_flat)/nParams)): # Friis cascade noise loop
           Ti = p[i][1] # grab specific components noise, or thermal temp
+          print("i: "+str(i))
           if i == 0:
             Tf += Ti
+            print("Ti: "+str(Ti))
           else:
             Gprod = np.prod(Gc[:i])
             Tf += Ti / Gprod
+            print("Tf: "+str(Tf))
       NSD =10.0*np.log10( 1.38e-23*Tf*1000.0) # noise spectral density [dBm/Hz]
       # add NSD for component
       p[-1][4] = NSD
@@ -164,7 +167,7 @@ def addCable(T,L,fin,ctype="SC-086/50-SS-SS",S=0.0,p=0):
       Gc = 10.0**(p[:,2]/10.0) # component gain array and convert to linear
       #print(Gc)
       p_flat = p.flatten()
-      for i in range(len(p_flat)/5): # Friis cascade noise loop
+      for i in range(int(len(p_flat)/5)): # Friis cascade noise loop
           Ti = p[i][1] # grab specific components noise, or thermal temp
           if i == 0:
             Tf += Ti
