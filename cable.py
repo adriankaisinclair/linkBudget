@@ -16,7 +16,7 @@ plotting = False
 #ctype = "SC-219/50-SS-SS"
 #f_0 = 0.500 # GHz
 #length = 1000.0 # mm
-#Temp = 4. # K
+#Temp = 77. # K
 
 # Cable Parameters
 # f - frequency data points in GHz
@@ -100,10 +100,12 @@ def getLoss(f_0,Temp,length,ctype):
   #print "Loss at freq "+str(f_0)+"GHz at temp "+str(Temp)+"K with cable "+ctype+" :"+str(LtoReturn)+"[dB]"
   return LtoReturn # Loss in [dB]
 
-
 if plotting == True:
   # for plotting above fitting equations
   f_fit = np.linspace(0,20,2001)
+  f , LT1, LT2, T1, T2 = cableParams(ctype)
+  Afit_T1 = lsFit(f,LT1)
+  Afit_T2 = lsFit(f,LT2)
   L_T1_fit = Afit_T1*np.sqrt(f_fit)
   L_T2_fit = Afit_T2*np.sqrt(f_fit)
   Lfit = np.zeros(len(f_fit))
