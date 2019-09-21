@@ -7,6 +7,7 @@
 #   http://www.coax.co.jp/en/product/sc/219-50-ss-ss.html
 #   http://www.coax.co.jp/en/product/sc/086-50-nbti-nbti.html
 #   https://rfcoax.com/technical-drawing/S086MMHF-20.5.html
+#   https://www.tek-stock.com/ut-085-ss-ss/
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -14,9 +15,9 @@ import matplotlib.pyplot as plt
 plotting = False
 # input parameters for testing
 #ctype = "SC-219/50-SS-SS"
-#f_0 = 0.500 # GHz
+#f = 0.500 # GHz
 #length = 1000.0 # mm
-#Temp = 77. # K
+#Temp = 300. # K
 
 # Cable Parameters
 # f - frequency data points in GHz
@@ -44,6 +45,14 @@ def cableParams(ctype):
     LT2 = np.array([1.9,2.6,5.9,8.3,11.7]) # dB/m
     T1 = 300. # K
     T2 = 4. # K
+  elif ctype == "UT-085-SS-SS":
+    # UT-085-SS-SS
+    # https://www.tek-stock.com/ut-085-ss-ss/
+    f = np.array([0.5,1,5,10,18]) # GHz
+    LT1 = np.array([2.92,4.13,9.32,13.25,18.90])  # dB/m
+    LT2 = np.array([2.92,4.12,9.31,13.24,18.89])  # dB/m
+    T1 = 300. # K
+    T2 = 299. # K
   elif ctype == "SC-086/50-NbTi-NbTi":  
     # SC-086/50-NbTi-NbTi
     # http://www.coax.co.jp/en/product/sc/086-50-nbti-nbti.html
