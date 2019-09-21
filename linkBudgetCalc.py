@@ -3,7 +3,7 @@
 import numpy as np
 import SchemDraw as schem
 import customElements as e
-#import SchemDraw.elements as e
+import matplotlib.pyplot as plt
 from cable import *
 # manual for SchemDraw
 # https://cdelker.bitbucket.io/SchemDraw/SchemDraw.html
@@ -13,7 +13,7 @@ from cable import *
 d = schem.Drawing() # initialize schematic
 nParams = 5 # number of parameters for each component stored in array p
 p = np.zeros(nParams) # initialize component parameter array p
-
+plt.ion()
 ##########################
 # Amplifier function
 ##########################
@@ -164,7 +164,7 @@ def addCable(T,L,fin,ctype="SC-086/50-SS-SS",S=0.0,p=0):
       Gc = 10.0**(p[:,2]/10.0) # component gain array and convert to linear
       #print(Gc)
       p_flat = p.flatten()
-      for i in range(int(len(p_flat)/5)): # Friis cascade noise loop
+      for i in range(int(len(p_flat)/nParams)): # Friis cascade noise loop
           Ti = p[i][1] # grab specific components noise, or thermal temp
           if i == 0:
             Tf += Ti
