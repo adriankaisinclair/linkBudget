@@ -37,12 +37,28 @@ def cableParams(ctype):
     LT2 = np.array([4.7,6.6,14.8,20.9,29.5]) # dB/m
     T1 = 300 # K
     T2 = 4 # K
+  if ctype == "SC-086/50-CN-CN":
+    # SC-086/50-CN-CN
+    # http://www.coax.co.jp/en/product/sc/086-50-cn-cn.html  
+    f = np.array([0.5,1,5,10,20]) # GHz
+    LT1 = np.array([5.4,7.7,17.1,24.3,34.6]) # dB/m
+    LT2 = np.array([4.1,5.7,12.8,18.1,25.7]) # dB/m
+    T1 = 300 # K
+    T2 = 4 # K
   elif ctype == "SC-219/50-SS-SS":
     # SC-219/50-SS-SS
     # http://www.coax.co.jp/en/product/sc/219-50-ss-ss.html
     f = np.array([0.5,1,5,10,20]) # GHz
     LT1 = np.array([3.0,4.2,9.4,13.5,19.2]) # dB/m
     LT2 = np.array([1.9,2.6,5.9,8.3,11.7]) # dB/m
+    T1 = 300. # K
+    T2 = 4. # K
+  elif ctype == "SC-219/50-CN-CN":
+    # SC-219/50-CN-CN
+    # http://www.coax.co.jp/en/product/sc/219-50-cn-cn.html
+    f = np.array([0.5,1,5,10,20]) # GHz
+    LT1 = np.array([2.4,4.3,7.6,10.8,15.5]) # dB/m
+    LT2 = np.array([1.6,2.3,5.1,7.2,10.2]) # dB/m
     T1 = 300. # K
     T2 = 4. # K
   elif ctype == "UT-085-SS-SS":

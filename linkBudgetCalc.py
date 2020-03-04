@@ -66,7 +66,7 @@ def addAmp(T,G,S=0.,p=0):
     a1.add_label("G [dB]: "+str(round(G,4)),loc='bot',ofst=2.0)
     a1.add_label("P [dBm]: "+str(round(P,4)),loc='bot',ofst=3.0)
     a1.add_label("Tcas [K]: "+str(round(Tf,4)),loc='bot',ofst=4.0)
-    a1.add_label("NSD [dBm/Hz]: "+str(round(NSD,2)),loc='bot',ofst=5.0)
+    #a1.add_label("NSD [dBm/Hz]: "+str(round(NSD,2)),loc='bot',ofst=5.0)
     d.add(e.LINE, d='right', l=4)
     return p
 
@@ -121,7 +121,7 @@ def addAtten(T,A,S=0.,p=0):
     a1.add_label("A [dB]: "+str(round(-abs(A),4)),loc='bot',ofst=2.0)
     a1.add_label("P [dBm]: "+str(round(P,4)),loc='bot',ofst=3.0)
     a1.add_label("Tcas [K]: "+str(round(Tf,4)),loc='bot',ofst=4.0)
-    a1.add_label("NSD [dBm/Hz]: "+str(round(NSD,2)),loc='bot',ofst=5.0)
+    #a1.add_label("NSD [dBm/Hz]: "+str(round(NSD,2)),loc='bot',ofst=5.0)
     d.add(e.LINE, d='right', l=4)
     return p
 
@@ -182,7 +182,7 @@ def addCable(T,L,fin,ctype="SC-086/50-SS-SS",S=0.0,p=0):
     a1.add_label("A [dB]: "+str(round(-abs(A),4)),loc='bot',ofst=2.0)
     a1.add_label("P [dBm]: "+str(round(P,4)),loc='bot',ofst=3.0)
     a1.add_label("Tcas [K]: "+str(round(Tf,4)),loc='bot',ofst=4.0)
-    a1.add_label("NSD [dBm/Hz]: "+str(round(NSD,2)),loc='bot',ofst=5.0)
+    #a1.add_label("NSD [dBm/Hz]: "+str(round(NSD,2)),loc='bot',ofst=5.0)
     a1.add_label("Length [mm]: "+str(round(L,2)),loc='bot',ofst=6.0)
     d.add(e.LINE, d='right', l=4)
     return p
